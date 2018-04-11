@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gottaboy.girl.dao.User1Mapper">
+  <resultMap id="BaseResultMap" type="com.gottaboy.girl.bean.User1">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="loginname" jdbcType="VARCHAR" property="loginname" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="usertype" jdbcType="TINYINT" property="usertype" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, loginname, name, password, sex, age, usertype, status, organization_id, createdate, 
+    phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user1
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user1
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gottaboy.girl.bean.User1">
+    insert into user1 (id, loginname, name,
+      password, sex, age, 
+      usertype, status, organization_id, 
+      createdate, phone)
+    values (#{id,jdbcType=BIGINT}, #{loginname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{age,jdbcType=TINYINT}, 
+      #{usertype,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{organizationId,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gottaboy.girl.bean.User1">
+    insert into user1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginname != null">
+        loginname,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="organizationId != null">
+        organization_id,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gottaboy.girl.bean.User1">
+    update user1
+    <set>
+      <if test="loginname != null">
+        loginname = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="usertype != null">
+        usertype = #{usertype,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null">
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gottaboy.girl.bean.User1">
+    update user1
+    set loginname = #{loginname,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      age = #{age,jdbcType=TINYINT},
+      usertype = #{usertype,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      phone = #{phone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getUserList" resultMap="BaseResultMap" parameterType="java.util.Map">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from user1
+        where loginname is not null
+       <if test="loginname != null and loginname != '' ">
+          and  loginname = #{loginname,jdbcType=VARCHAR}
+       </if>
+	    order by createdate desc
+	</select>
+</mapper>

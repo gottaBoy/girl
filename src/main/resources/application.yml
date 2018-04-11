@@ -1,0 +1,72 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver #org.gjt.mm.mysql.Driver #com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/chris_db
+    username: root
+    password:
+#jpa:
+#    database: mysql
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+#    show-sql: true
+#    properties:
+#       hibernate:
+#          dialect: org.hibernate.dialect.MySQL5Dialect
+
+#  resources:
+#     static-locations: classpath:/static/
+#  mvc:
+#     view:
+#       prefix: classpath:/templates/
+#       suffix: .html
+#     static-path-pattern: classpath:/templates/html/ #/**
+
+#<!-- 关闭thymeleaf缓存 开发时使用 否则没有实时画面-->
+#  thymeleaf:
+#     cache: false
+###       enabled: true
+#     prefix: classpath:/templates/
+#     suffix: .html
+#     mode: LEGACYHTML5
+#     encoding: UTF-8
+#     content-type: text/html
+#     view-names: .html
+#thymeleaf end
+    ## Freemarker 配置
+    ## 文件配置路径
+  freemarker:
+    template-loader-path: classpath:/templates/vftl/
+    settings:
+      auto_import: template.ftl as i
+      datetime_format: yyyy-MM-dd HH:mm:ss
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+#      prefix: /templates/
+    suffix: .ftl
+
+## Mybatis 配置
+mybatis:
+   typeAliasesPackage: com.gottaboy.girl.bean
+   mapperLocations: classpath:mapper/*.xml
+
+##pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+#shiro
+password:
+  algorithmName: md5
+  hashIterations: 2
+
